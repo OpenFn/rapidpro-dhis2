@@ -5,7 +5,8 @@ getTEIs({
   //trackedEntityInstance: 'jQtdJHakJdj',
   skipPaging: true,
 }, {}, state => {
-  console.log(state.data.trackedEntityInstances.map(x => JSON.stringify(x.attributes, null, 2))); //Log DHIS2 response
+  const {data} = state;
+  console.log(data.trackedEntityInstances.map(tei => tei.attributes.map(a => `${a.displayName}: ${a.value}`))) //Log DHIS2 response
   return state;
 });
 
