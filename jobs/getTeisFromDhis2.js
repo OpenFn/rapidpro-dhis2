@@ -1,9 +1,11 @@
 getTEIs({
   fields: '*',
   ou: 'DiszpKrYNg8',
-  trackedEntityInstance: 'TKgxCgrSe56',
+  program: 'uy2gU8kT1jF',
+  //trackedEntityInstance: 'jQtdJHakJdj',
   skipPaging: true,
 }, {}, state => {
   console.log(state.data); //Log DHIS2 response
   return state;
 });
+
