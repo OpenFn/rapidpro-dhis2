@@ -1,4 +1,4 @@
 // language-http
 
 get('someUrl', { ...params }, callback);
-post('someUrl', { body: state => state.data })'
+post('someUrl', { body: state => state.data })
