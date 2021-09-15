@@ -32,6 +32,7 @@ each(
   addContact(
     dataValue('contact'),
     state => {
+      console.log(state.data)
       state.data.uuids.push(state.data.uuid)
       return state;
     }
