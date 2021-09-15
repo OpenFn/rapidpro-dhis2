@@ -16,7 +16,7 @@ createTEI({
          value: 'Gigiwe',
       },
       { attribute: 'P2cwLGskgxn', // phone Number
-        value: dataValue('contact.urn').slice(-10)
+        value: state.data.contact.urn.slice(-10)
       }
    ],
    enrollments: [
