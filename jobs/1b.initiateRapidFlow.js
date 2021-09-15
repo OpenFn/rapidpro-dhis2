@@ -22,7 +22,7 @@ fn(state => {
       }
       return { contact };
     })
-  return { ...state, rapidProContacts, data: { uuids: [] } };
+  return { ...state, rapidProContacts, uuids: [] };
 });
 
 // For each item in this rapidProContact array...
@@ -32,8 +32,8 @@ each(
   addContact(
     dataValue('contact'),
     state => {
-      console.log(state.data)
-      state.data.uuids.push(state.data.uuid)
+      console.log(state.uuids)
+      state.uuids.push(state.data.uuid)
       return state;
     }
   )
@@ -42,6 +42,6 @@ each(
 // Start communication flows with the contacts...
 startFlow({
   flow: '65e20d7c-2490-4d0e-a96e-b58ee7d0858b',
-  contacts: dataValue('uuids'),
+  contacts: state => state.uuids,
   restart_participants: false,
 })
