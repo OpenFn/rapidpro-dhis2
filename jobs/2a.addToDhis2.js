@@ -8,7 +8,7 @@ fn(state => {
   const attributes = [
     { attribute: 'zDhUuAYrxNC', value: lastName },
     { attribute: 'w75KJ2mc4zz', value: firstName },
-    { attribute: 'P2cwLGskgxn', value: urn.slice(-10) },
+    { attribute: 'P2cwLGskgxn', value: urn.slice(-12) },
   ];
 
   return { ...state, data: { ...state.data, attributes, today } };
