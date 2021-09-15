@@ -6,7 +6,7 @@ fn(state => {
     const elem = attributes.find(a => a.displayName.toLowerCase() == name.toLowerCase())
     return elem ? elem.value : null
   }
-  // ===========================================================================
+  // ==========================================================================
 
   console.log('Build RapidPro contacts from raw dhis2 response...');
   const rapidProContacts = state.data.trackedEntityInstances
