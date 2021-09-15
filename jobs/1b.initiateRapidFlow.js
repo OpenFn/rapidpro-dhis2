@@ -1,11 +1,4 @@
 // For each item in this rapidProContact array...
-fn(state => {
-  if (state.rapidProContacts.length == 0) {
-    throw "We couldn't find anyone with a phone number!";
-  }
-  return state;
-})
-
 each(
   '$.rapidProContacts[*]',
   // Add contacts to RapidPro...
