@@ -1,15 +1,27 @@
 // Manipulate the data from dhis2...
 fn(state => {
+
+  // TODO: move this to the dhis2 adaptor ======================================
+  function valByName(attributes, name) {
+    const elem = attributes.find(a => a.displayName.toLowerCase() == name.toLowerCase())
+    return elem ? elem.value : null
+  }
+  // ===========================================================================
+
   console.log('Build RapidPro contacts from raw dhis2 response...');
-  const rapidProContacts = state.data.trackedEntityInstances.map(tei => {
-    const firstName = tei.attributes.find(attribute => attribute.displayName.toLowerCase() == 'first name').value
-    const lastName = tei.attributes.find(attribute => attribute.displayName.toLowerCase() == 'last name').value
-    const contact = {
-      name: `${firstName} ${lastName}`,
-      fields: { tei_id: 'something' }
-    }
-    return { contact };
-  })
+  const rapidProContacts = state.data.trackedEntityInstances
+    .filter(tei => valByName(tei.attributes, 'phone number'))
+    .map(tei => {
+      const firstName = valByName(tei.attributes, 'first name')
+      const lastName = valByName(tei.attributes, 'last name')
+      const phoneNumber = valByName(tei.attributes, 'phone number');
+      const contact = {
+        name: `${firstName} ${lastName}`,
+        urns: [`tel:${phoneNumber}`],
+        fields: { tei_id: tei.trackedEntityInstance }
+      }
+      return { contact };
+    })
   return { ...state, rapidProContacts, data: { uuids: [] } };
 });
 
@@ -24,7 +36,7 @@ each(
       return state;
     }
   )
-)
+);
 
 // Start communication flows with the contacts...
 startFlow({
