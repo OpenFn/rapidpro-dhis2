@@ -1,2 +1,4 @@
-get('someUrl', { ...params }, callback);
-post('someUrl', { body: state => state.data })
+fn(state => {
+  console.log(state.data);
+  return state;
+})
