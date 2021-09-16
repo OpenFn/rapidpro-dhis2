@@ -1,11 +1,13 @@
 // For each item in this rapidProContact array...
 each(
   '$.rapidProContacts[*]',
-  // Add contacts to RapidPro...
-  addContact(dataValue('contact'), state => {
-    state.uuids.push(state.data.uuid);
-    return state;
-  })
+  fn(state =>
+    // Add contacts to RapidPro...
+    upsertContact(dataValue('contact'), x => {
+      x.uuids.push(x.data.uuid);
+      return x;
+    })(state)
+  )
 );
 
 // Start communication flows with the contacts...
