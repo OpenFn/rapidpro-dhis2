@@ -6,7 +6,7 @@ fn(state => {
 
 upsertContact(state => ({
   urns: [state.urn],
-  fields: { tei_Id: state.teiId },
+  fields: { tei_id: state.teiId },
 }));
 
 sendBroadcast({
