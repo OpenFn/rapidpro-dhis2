@@ -2,7 +2,7 @@
 each(
   '$.rapidProContacts[*]',
   // Add contacts to RapidPro...
-  upsertContact(dataValue('contact'), state => {
+  addContact(dataValue('contact'), state => {
     state.uuids.push(state.data.uuid);
     return state;
   })
