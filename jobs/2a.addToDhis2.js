@@ -1,17 +1,18 @@
 fn(state => {
   const { name, urn } = state.data.contact;
 
+  
   const firstName = name ? name.split(' ')[0] : 'Anonymous';
   const lastName = name ? name.split(' ')[1] : 'Test';
   const today = new Date();
-
+  
   const attributes = [
     { attribute: 'zDhUuAYrxNC', value: lastName },
     { attribute: 'w75KJ2mc4zz', value: firstName },
     { attribute: 'P2cwLGskgxn', value: urn.slice(-12) },
   ];
 
-  return { ...state, data: { ...state.data, attributes, today } };
+  return { ...state, data: { ...state.data, attributes, today }, urn };
 });
 
 createTEI({

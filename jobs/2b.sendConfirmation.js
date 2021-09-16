@@ -1,9 +1,15 @@
 fn(state => {
-  console.log('Manipulate data from dhis2...');
-  return state;
+  console.log(`Manipulate data from dhis2 for RapidPro contact ${state.urn}`);
+  console.log(`TEI ID: ${state.data.response.importSummaries[0].reference}`);
+  return { ...state, teiId: state.data.response.importSummaries[0].reference };
 });
 
+upsertContact(state => ({
+  urns: [state.urn],
+  fields: { tei_Id: state.teiId },
+}));
+
 sendBroadcast({
-  text: 'Hi there nice sweater! Lets go walk around outside.',
-  contacts: ['a052b00c-15b3-48e6-9771-edbaa277a353'],
+  text: "You're registered in the MNCH program. Your first visit is tomorrow at 4pm.",
+  urns: [state.urn],
 });
