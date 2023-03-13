@@ -1,13 +1,13 @@
-fn(state => {
-  console.log(state);
-  return state;
-})
-// get('trackedEntityInstances', {
-//   fields: '*',
-//   ou: 'DiszpKrYNg8',
-//   program: 'uy2gU8kT1jF',
-//   skipPaging: true,
-// });
+// fn(state => {
+//   console.log(state);
+//   return state;
+// })
+get('trackedEntityInstances', {
+  fields: '*',
+  ou: 'DiszpKrYNg8',
+  program: 'uy2gU8kT1jF',
+  skipPaging: true,
+});
 
 // // Manipulate the data from dhis2...
 // fn(state => {
